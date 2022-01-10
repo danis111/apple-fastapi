@@ -18,10 +18,11 @@ depends_on = None
 
 
 def upgrade():
-    op.add_column('posts', sa.Column('content', sa.String(), nullable=False))
+    op.create_table('posts', sa.Column('id', sa.Integer(), nullable=False,
+                    primary_key=True), sa.Column('title', sa.String(), nullable=False))
     pass
 
 
 def downgrade():
-    op.drop_column('posts', 'content')
+    op.drop_table('posts')
     pass
